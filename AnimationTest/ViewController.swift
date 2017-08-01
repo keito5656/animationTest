@@ -20,6 +20,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func tapButton(_ sender: Any) {
+        let secondVC = storyboard?.instantiateViewController(withIdentifier: "second")
+        let parentVC = navigationController!
+        parentVC.addChildViewController(secondVC!)
+        parentVC.view.addSubview(secondVC!.view)
+        secondVC?.didMove(toParentViewController: parentVC)
+        UIView.transition(from: parentVC.view,
+                          to: secondVC!.view,
+                          duration: 5,
+                          options: .transitionFlipFromLeft,
+                          completion: nil)
+    }
 
 }
 
